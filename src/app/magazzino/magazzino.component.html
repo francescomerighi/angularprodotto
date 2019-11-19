@@ -1,6 +1,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-4">
+      <button class="btn btn-primary btn-black" (click)="addNuovoProdotto()">Aggiungi</button><br>
+      <br>
 			<div class="list-group">
 				<button type="button" class="list-group-item list-group-item-action" 
         *ngFor="let prodotto of prodotti.getItems(); let i = index" (click)="setCorrente(i)"

@@ -11,11 +11,15 @@ export class Prodotti {
     return this.dati[index];
   }
 
-  getItems(): Prodotto {
+  getItems(): Prodotto[] {
     return this.dati;
   }
 
   add(item: Prodotto): void {
     this.dati.push(item);
+  }
+
+  getLastIndex(): number {
+    return this.dati.length - 1;
   }
 }
