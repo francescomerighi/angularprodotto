@@ -32,5 +32,4 @@ export class MagazzinoComponent implements OnInit {
     this.prodotti.add(new Prodotto('nuovo', '', 0.00, new Date(), 0));
     this.corrente = this.prodotti.getLastIndex();
   }
-
 }
