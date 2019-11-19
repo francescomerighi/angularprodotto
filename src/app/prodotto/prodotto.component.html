@@ -7,24 +7,24 @@
       <span class="badge badge-danger" *ngIf="prodotto.isScaduto()">Scaduto</span>
     </div>
   </div>
-<div class="form-group">
-    <label for="codiceInput">Codice prodotto</label>
-    <input type="email" class="form-control" id="codiceInput"  placeholder="Inserisci il codice del prodotto"  [(ngModel)] = "prodotto.codice"> 
+	<div class="form-group">
+		<label for="codiceInput">Codice prodotto</label>
+		<input type="text" class="form-control" id="codiceInput" placeholder="Inseririe il codice" [(ngModel)]="prodotto.codice">
   </div>
-<div class="form-group">
-    <label for="nomeInput">Nome prodotto</label>
-    <input type="email" class="form-control" id="nomeInput"  placeholder="Inserisci il nome del prodotto" [(ngModel)] = "prodotto.nome">
+  <div class="form-group">
+		<label for="nomeInput">Nome prodotto</label>
+		<input type="text" class="form-control" id="nomeInput" placeholder="Inseririe il nome del prodotto" [(ngModel)]="prodotto.nome">
   </div>
-<div class="form-group">
-    <label for="prezzoInput">Prezzo</label>
-    <input type="email" class="form-control" id="prezzoInput"  placeholder="Inserisci il prezzo del prodotto" [(ngModel)] = "prodotto.prezzo">
+  <div class="form-group">
+		<label for="prezzoInput">Prezzo</label>
+		<input type="text" class="form-control" id="prezzoInput" placeholder="Inseririe il prezzo del prodotto" [(ngModel)]="prodotto.prezzo">
   </div>
-<div class="form-group">
-    <label for="dataInput">Data di scadenza</label>
-    <input type="date" class="form-control" id="dataInput"  placeholder="Inserisci la data di scadenza del prodotto" [value]="prodotto.getData()">
-  </div>
-<div class="form-group">
-    <label for="quantInput">Quantità prodotto</label>
-    <input type="text" class="form-control" id="quantInput"  placeholder="Inserisci la quantita del prodotto" [(ngModel)] = "prodotto.quantita">
+  <div class="form-group">
+		<label for="dataScadenzaInput">Data di scadenza</label>
+		<input type="date" class="form-control" id="dataScadenzaInput" placeholder="Inseririe la data di scadenza" [value]="prodotto.getData()">
+  </div>  
+  <div class="form-group">
+		<label for="quantitaInput">Quantità presente in magazzino</label>
+		<input type="text" class="form-control" id="quantitaInput" placeholder="Inseririe la quantità presente in magazzino" [(ngModel)]="prodotto.quantita">
   </div>
 </div>

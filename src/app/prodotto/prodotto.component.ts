@@ -14,7 +14,7 @@ export class ProdottoComponent implements OnInit {
       'P1',
       'Mozzarella di bufala IGP',
       2.56,
-      new Date('2019-11-20'),
+      new Date('2019-11-17'),
       24
     )
    }
