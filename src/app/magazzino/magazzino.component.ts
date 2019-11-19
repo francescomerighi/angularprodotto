@@ -8,23 +8,24 @@ import { Prodotto } from '../prodotto/prodotto.model';
   styleUrls: ['./magazzino.component.css']
 })
 export class MagazzinoComponent implements OnInit {
+
   prodotti: Prodotti;
-
-
+  corrente: number;
+  
   constructor() { }
 
   ngOnInit() {
-    this.prodotti = new Prodotto();
-    this.prodotti.add(
-      'P1', 'Mozzarella di bufala IGP', 2.56, new Date('2019-11-17'), 24);
-    this.prodotti.add(
-      'P2', 'Pasta De Cecco', 3.12, new Date('2019-11-17'), 10);
-    this.prodotti.add(
-      'P3', 'Pomodori', 4.57, new Date('2019-11-17'), 13);
-    this.prodotti.add(
-      'P4', 'Uova', 7.89, new Date('2019-11-17'), 33);
-    this.prodotti.addd(
-      'P5', 'Prosciutto crudo', 2.12, new Date('2019-11-17'), 23);
+    this.prodotti = new Prodotti();
+    this.prodotti.add(new Prodotto('P1', 'Mozzarella di bufala IGP', 2.32, new Date('2019-11-20'), 14));
+    this.prodotti.add(new Prodotto('P2', 'Prosciutto crudo', 2.55, new Date('2019-11-10'), 34));
+    this.prodotti.add(new Prodotto('P3', 'Pasta De Cecco', 0.59, new Date('2019-11-10'), 56));
+    this.prodotti.add(new Prodotto('P4', 'Acqua frizzante', 3.64, new Date('2019-11-22'), 24));
+    this.prodotti.add(new Prodotto('P5', 'Pomodori', 8.65, new Date('2019-11-10'), 4));
+    this.corrente = 0;
+  }
+
+  setCorrente(index: number) {
+    this.corrente = index;
   }
 
 }

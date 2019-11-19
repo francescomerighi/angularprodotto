@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Prodotto } from './prodotto.model';
 
 @Component({
@@ -7,17 +7,10 @@ import { Prodotto } from './prodotto.model';
   styleUrls: ['./prodotto.component.css']
 })
 export class ProdottoComponent implements OnInit {
-  prodotto: Prodotto;
+  @Input() prodotto: Prodotto;
 
   constructor() {
-    this.prodotto = new Prodotto(
-      'P1',
-      'Mozzarella di bufala IGP',
-      2.56,
-      new Date('2019-11-17'),
-      24
-    )
-   }
+  }
 
   ngOnInit() {
     console.log(this.prodotto.isScaduto());
