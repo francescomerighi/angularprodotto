@@ -1,22 +1,30 @@
 <div class="container">
+  <div class="row">
+    <div class="col-10">
+    <p class="lead" [ngStyle]="{'color': prodotto.getColor()}">{{prodotto.nome}}</p>
+    </div>
+    <div class="col-2">
+      <span class="badge badge-danger" *ngIf="prodotto.isScaduto()">Scaduto</span>
+    </div>
+  </div>
 <div class="form-group">
     <label for="codiceInput">Codice prodotto</label>
-    <input type="email" class="form-control" id="codiceInput"  placeholder="Inserisci il codice del prodotto">
+    <input type="email" class="form-control" id="codiceInput"  placeholder="Inserisci il codice del prodotto"  [(ngModel)] = "prodotto.codice"> 
   </div>
 <div class="form-group">
     <label for="nomeInput">Nome prodotto</label>
-    <input type="email" class="form-control" id="nomeInput"  placeholder="Inserisci il nome del prodotto">
+    <input type="email" class="form-control" id="nomeInput"  placeholder="Inserisci il nome del prodotto" [(ngModel)] = "prodotto.nome">
   </div>
 <div class="form-group">
     <label for="prezzoInput">Prezzo</label>
-    <input type="email" class="form-control" id="prezzoInput"  placeholder="Inserisci il prezzo del prodotto">
+    <input type="email" class="form-control" id="prezzoInput"  placeholder="Inserisci il prezzo del prodotto" [(ngModel)] = "prodotto.prezzo">
   </div>
 <div class="form-group">
     <label for="dataInput">Data di scadenza</label>
-    <input type="date" class="form-control" id="dataInput"  placeholder="Inserisci la data di scadenza del prodotto">
+    <input type="date" class="form-control" id="dataInput"  placeholder="Inserisci la data di scadenza del prodotto" [value]="prodotto.getData()">
   </div>
 <div class="form-group">
     <label for="quantInput">Quantità prodotto</label>
-    <input type="text" class="form-control" id="quantInput"  placeholder="Inserisci la quantita del prodotto">
+    <input type="text" class="form-control" id="quantInput"  placeholder="Inserisci la quantita del prodotto" [(ngModel)] = "prodotto.quantita">
   </div>
 </div>

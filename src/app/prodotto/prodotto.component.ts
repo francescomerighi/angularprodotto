@@ -14,12 +14,13 @@ export class ProdottoComponent implements OnInit {
       'P1',
       'Mozzarella di bufala IGP',
       2.56,
-      new Date('30/11/2019'),
+      new Date('2019-11-20'),
       24
     )
    }
 
   ngOnInit() {
+    console.log(this.prodotto.isScaduto());
   }
 
 }
