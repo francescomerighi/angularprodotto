@@ -1,30 +1,48 @@
 <div class="container">
-  <div class="row">
-    <div class="col-10">
-    <p class="lead" [ngStyle]="{'color': prodotto.getColor()}">{{prodotto.nome}}</p>
-    </div>
-    <div class="col-2">
-      <span class="badge badge-danger" *ngIf="prodotto.isScaduto()">Scaduto</span>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col-10">
+			<h4 [ngStyle]="{'color': prodotto.getScadenzaColor()}">{{prodotto.nome}}</h4>
+		</div>
+		<div class="col-2">
+			<span class="badge"
+      [ngClass]="{'badge-danger': prodotto.giorniAScadenza() <= 0, 'badge-warning': prodotto.giorniAScadenza() > 0 && prodotto.giorniAScadenza() < 7, 'badge-success' : prodotto.giorniAScadenza() >= 7}"
+      >{{prodotto.getScadenzaLabel()}}</span>
+		</div>
+	</div>
 	<div class="form-group">
 		<label for="codiceInput">Codice prodotto</label>
-		<input type="text" class="form-control" id="codiceInput" placeholder="Inseririe il codice" [(ngModel)]="prodotto.codice">
+		<input type="text" class="form-control" #codiceInput placeholder="Inseririe il codice" [value]="prodotto.codice" (keydown)="onValoreCambiato()">
   </div>
-  <div class="form-group">
-		<label for="nomeInput">Nome prodotto</label>
-		<input type="text" class="form-control" id="nomeInput" placeholder="Inseririe il nome del prodotto" [(ngModel)]="prodotto.nome">
+		<div class="form-group">
+			<label for="nomeInput">Nome prodotto</label>
+			<input type="text" class="form-control" #nomeInput placeholder="Inseririe il nome del prodotto" [value]="prodotto.nome" (keydown)="onValoreCambiato()"
+   >
   </div>
-  <div class="form-group">
-		<label for="prezzoInput">Prezzo</label>
-		<input type="text" class="form-control" id="prezzoInput" placeholder="Inseririe il prezzo del prodotto" [(ngModel)]="prodotto.prezzo">
+			<div class="form-group">
+				<label for="prezzoInput">Prezzo</label>
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroupPrepend">€</span>
+					</div>
+					<input type="number" class="form-control" #prezzoInput placeholder="Inseririe il prezzo del prodotto" [value]="prodotto.prezzo"
+    (keydown)="onValoreCambiato()">
+    </div>
+				</div>
+				<div class="form-group">
+					<label for="dataScadenzaInput">Data di scadenza</label>
+					<input type="date" class="form-control" #dataInput placeholder="Inseririe la data di scadenza" [value]="prodotto.getDataScadenza()"
+    (keydown)="onValoreCambiato()" (change)="onValoreCambiato()">
   </div>
-  <div class="form-group">
-		<label for="dataScadenzaInput">Data di scadenza</label>
-		<input type="date" class="form-control" id="dataScadenzaInput" placeholder="Inseririe la data di scadenza" [value]="prodotto.getData()">
-  </div>  
-  <div class="form-group">
-		<label for="quantitaInput">Quantità presente in magazzino</label>
-		<input type="text" class="form-control" id="quantitaInput" placeholder="Inseririe la quantità presente in magazzino" [(ngModel)]="prodotto.quantita">
+					<div class="form-group">
+						<label for="quantitaInput">Quantità presente in magazzino</label>
+						<input type="text" class="form-control" #quantitaInput placeholder="Inseririe la quantità presente in magazzino" [value]="prodotto.quantita" (keydown)="onValoreCambiato()">
   </div>
-</div>
+						<div class="row" *ngIf="prodottoCambiato">
+							<div class="col-6">
+								<button class="btn btn-primary btn-block" (click)="onSalvaClick($event)">Salva</button>
+							</div>
+							<div class="col-6">
+								<button class="btn btn-secondary btn-block" (click)="onAnnullaClick()">Annulla</button>
+							</div>
+						</div>
+					</div>

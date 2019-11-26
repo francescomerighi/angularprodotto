@@ -1,3 +1,5 @@
+const MINSTOCK: number = 10;
+
 export class Prodotto {
   codice: string;
   nome: string;
@@ -5,7 +7,13 @@ export class Prodotto {
   dataScadenza: Date;
   quantita: number;
 
-  constructor(codice, nome, prezzo, dataScadenza, quantita) {
+  constructor(
+    codice: string,
+    nome: string,
+    prezzo: number,
+    dataScadenza: Date,
+    quantita: number
+  ) {
     this.codice = codice;
     this.nome = nome;
     this.prezzo = prezzo;
@@ -13,20 +21,57 @@ export class Prodotto {
     this.quantita = quantita;
   }
 
-  getData(): string {
-    return this.dataScadenza.getFullYear() + '-' + (this.dataScadenza.getMonth()+1) + '-' + this.dataScadenza.getDate();
+
+  getDataScadenza(): string {
+    return this.dataScadenza.toISOString().substring(0, 10);
   }
 
-  isScaduto(): boolean {
-    return this.dataScadenza < new Date();
+  isScadutoOInScadenza(): boolean {
+    return this.giorniAScadenza() < 7;
   }
 
-  getColor(): string {
-    if(this.isScaduto()) {
+  getScadenzaColor(): string {
+    if (this.giorniAScadenza() <= 0) {
       return 'red';
     }
-    else {
-      return 'green';
+    if (this.giorniAScadenza() < 7) {
+      return 'orange';
     }
+    return 'green';
+  }
+
+  getScadenzaLabel(): string {
+    if (this.giorniAScadenza() < 0) {
+      return 'Scaduto';
+    }
+    if (this.giorniAScadenza() == 0) {
+      return 'Scade oggi';
+    }
+    if (this.giorniAScadenza() < 7) {
+      return 'Scade fra ' + this.giorniAScadenza() + ' giorni.';
+    }
+    return this.dataScadenza.toLocaleDateString();
+  }
+
+  getScadenzaShortLabel(): string {
+    if (this.giorniAScadenza() < 0) {
+      return 'S';
+    }
+    if (this.giorniAScadenza() == 0) {
+      return 'O';
+    }
+    if (this.giorniAScadenza() < 7) {
+      return this.giorniAScadenza().toString();
+    }
+    return 'V';
+  }
+
+  giorniAScadenza(): number {
+    let diffInTime = this.dataScadenza.getTime() - new Date().getTime();
+    return Math.round(diffInTime / (1000 * 3600 * 24));
+  }
+
+  daAcquistare(): boolean {
+    return this.quantita < MINSTOCK && this.nome != '';
   }
 }

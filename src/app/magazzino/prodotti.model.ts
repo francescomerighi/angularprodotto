@@ -22,4 +22,8 @@ export class Prodotti {
   getLastIndex(): number {
     return this.dati.length - 1;
   }
+
+  prodottiPresenti(): boolean {
+    return this.dati.length > 0;
+  }
 }
